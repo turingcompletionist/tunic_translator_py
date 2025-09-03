@@ -29,7 +29,7 @@ uh	bc
 eh	adef
 a	abcd
 ah	abd
-ay	c
+ai	c
 o	abcdef
 oy	e
 u	abcde

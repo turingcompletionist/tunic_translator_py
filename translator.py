@@ -10,6 +10,7 @@ tunic_map = map_maker()
 
 # parse tunic code into phonetic transcription
 def parse(input: str) -> str:
+    input = input.strip()
     if input in tunic_map.keys():
         return tunic_map[input]
     else:
@@ -20,10 +21,7 @@ def parse_line(input: str) -> list[str]:
     word = []
     split_input: list[str] = input.split(".")
     for char in split_input:
-        if char in tunic_map.keys():
-            word.append(tunic_map[char])
-        else:
-            word.append("?")
+        word.append(parse(char))
     return word
     
 # parse file where each line is a tunic word
@@ -37,7 +35,11 @@ while True:
     input_str = input()
     if ".txt" in input_str:
         words = parse_file(input_str)
+    elif input_str in ["exit", "q", "quit"]:
+        break
     else:
         words.append(parse_line(input_str))
     for word in words:
-        print(word)
+        for char in word:
+            print(char, end="")
+        print()
